@@ -115,7 +115,7 @@ jobs:
           prerelease: "${{ matrix.preview_release }}"
           artifacts: "${{ env.build_dir }}/completed/${{ matrix.arch_type }}-${{ matrix.qbt_qt_version_name }}qbittorrent-nox,${{ env.build_dir }}/release_info/dependency-version.json"
           replacesArtifacts: true
-          tag: "manual-${{ env.release_tag }}"
+          tag: "auto-${{ env.release_tag }}"
           name: "自动构建 ${{ env.release_title }} 标准版"
           bodyFile: "${{ env.build_dir }}/release_info/release.md"
           allowUpdates: true
