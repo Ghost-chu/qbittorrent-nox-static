@@ -605,8 +605,8 @@ set_module_urls() {
 
 	###################################################################################################################################################
 
-	libtorrent_github_url="https://github.com/arvidn/libtorrent.git"
-	libtorrent_github_tags_list="$(git_git ls-remote -q -t --refs https://github.com/arvidn/libtorrent.git | awk '/\/v/{sub("refs/tags/", "");sub("(.*)(-[^0-9].*)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV)"
+	libtorrent_github_url="https://github.com/Ghost-chu/libtorrent-fast-hash-check.git"
+	libtorrent_github_tags_list="$(git_git ls-remote -q -t --refs https://github.com/Ghost-chu/libtorrent-fast-hash-check.git | awk '/\/v/{sub("refs/tags/", "");sub("(.*)(-[^0-9].*)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV)"
 
 	libtorrent_github_tag_default="$(grep -Eom1 "v${qbt_libtorrent_version}.([0-9]{1,2})" <<< "${libtorrent_github_tags_list}")"
 	libtorrent_github_tag="${libtorrent_github_tag:-$libtorrent_github_tag_default}"
