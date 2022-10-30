@@ -1,5 +1,5 @@
 # @credits https://github.com/c0re100/qBittorrent-Enhanced-Edition
-name: matrix multi build and release - customs tags
+name: matrix multi build and release - customs tags fast hash check
 
 on:
   workflow_dispatch:
