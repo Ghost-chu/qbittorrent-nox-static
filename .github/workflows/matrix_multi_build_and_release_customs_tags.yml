@@ -1,6 +1,5 @@
 # @credits https://github.com/c0re100/qBittorrent-Enhanced-Edition
-name: matrix multi build and release - customs tags
-
+name: 手动标准构建
 on:
   workflow_dispatch:
 
@@ -13,7 +12,7 @@ jobs:
         os_id: [alpine]
         os_version_id: [edge]
         arch_type: [x86_64, armhf, armv7, aarch64]
-        libtorrent_version: ["1.2"]
+        libtorrent_version: ["1.2", "2.0"]
         build_tool: ["qmake", cmake]
         qbittorrent_tag: ["-qt master", "-qt v4_4_x", "-qt v4_3_x", "-qt v4_2_x"]
         include:
@@ -116,8 +115,8 @@ jobs:
           prerelease: "${{ matrix.preview_release }}"
           artifacts: "${{ env.build_dir }}/completed/${{ matrix.arch_type }}-${{ matrix.qbt_qt_version_name }}qbittorrent-nox,${{ env.build_dir }}/release_info/dependency-version.json"
           replacesArtifacts: true
-          tag: "${{ env.release_tag }}"
-          name: "${{ env.release_title }}"
+          tag: "manual-${{ env.release_tag }}"
+          name: "手动构建-${{ env.release_title }}"
           bodyFile: "${{ env.build_dir }}/release_info/release.md"
           allowUpdates: true
           token: "${{ secrets.GITHUB_TOKEN }}"
