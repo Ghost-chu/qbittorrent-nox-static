@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 150
       matrix:
         os_id: [alpine]
         os_version_id: [edge]
