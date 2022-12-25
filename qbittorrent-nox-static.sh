@@ -102,7 +102,8 @@ set_default_values() {
 	qbt_optimise_strip="${qbt_optimise_strip:-no}"                          # Strip by default as we need full debug builds to be useful gdb to backtrace
 	qbt_revision_url="${qbt_revision_url:-userdocs/qbittorrent-nox-static}" # The workflow will set this dynamically so that the urls are not hardcoded to a single repo
 	qbt_workflow_type="${qbt_workflow_type:-standard}"                      # The standard workflow is the non legacy version where the script will increments the revision version automatically.
-
+	libtorrent_github_url="${libtorrent_github_url:-https://github.com/arvidn/libtorrent.git}"   # The libtorrent repository
+	qbittorrent_github_url="${qbittorrent_github_url:-https://github.com/Ghost-chu/qBittorrent.git}"
 	if [[ "${qbt_build_debug}" = 'yes' ]]; then
 		qbt_optimise_strip='no'
 		qbt_cmake_debug='ON'
@@ -607,14 +608,12 @@ set_module_urls() {
 
 	###################################################################################################################################################
 
-	libtorrent_github_url="https://github.com/arvidn/libtorrent.git"
-	libtorrent_github_tags_list="$(git_git ls-remote -q -t --refs https://github.com/arvidn/libtorrent.git | awk '/\/v/{sub("refs/tags/", "");sub("(.*)(-[^0-9].*)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV)"
+	libtorrent_github_tags_list="$(git_git ls-remote -q -t --refs ${libtorrent_github_url} | awk '/\/v/{sub("refs/tags/", "");sub("(.*)(-[^0-9].*)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV)"
 
 	libtorrent_github_tag_default="$(grep -Eom1 "v${qbt_libtorrent_version}.([0-9]{1,2})" <<< "${libtorrent_github_tags_list}")"
 	libtorrent_github_tag="${libtorrent_github_tag:-$libtorrent_github_tag_default}"
 
-	qbittorrent_github_url="https://github.com/Ghost-chu/qBittorrent.git"
-	qbittorrent_github_tag_default="$(git_git ls-remote -q -t --refs https://github.com/Ghost-chu/qBittorrent.git | awk '{sub("refs/tags/", "");sub("(.*)(-[^0-9].*|rc|alpha|beta)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV | head -n1)"
+	qbittorrent_github_tag_default="$(git_git ls-remote -q -t --refs ${qbittorrent_github_url} | awk '{sub("refs/tags/", "");sub("(.*)(-[^0-9].*|rc|alpha|beta)(.*)", ""); print $2 }' | awk '!/^$/' | sort -rV | head -n1)"
 	qbittorrent_github_tag="${qbitorrent_github_tag:-$qbittorrent_github_tag_default}"
 
 	#### Gihub Workflow URLS ##########################################################################################################################
