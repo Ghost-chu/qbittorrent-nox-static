@@ -1,0 +1,19 @@
+Subject: [PATCH] Fix the WebUI translation settings (upstream bug)
+---
+Index: src/webui/www/private/views/preferences.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/webui/www/private/views/preferences.html b/src/webui/www/private/views/preferences.html
+--- a/src/webui/www/private/views/preferences.html	(revision 24bf8eef6da5c4c116d7846e257485db600ce245)
++++ b/src/webui/www/private/views/preferences.html	(revision 7959edd30fa86750d7c9fc68497cafa240980fac)
+@@ -719,7 +719,7 @@
+             <option value="uk_UA">Українська</option>
+             <option value="uz@Latn">أۇزبېك</option>
+             <option value="vi_VN">Tiếng Việt</option>
+-            <option value="zh">简体中文</option>
++            <option value="zh_CN">简体中文</option>
+             <option value="zh_HK">香港正體字</option>
+             <option value="zh_TW">正體中文</option>
+         </select>
