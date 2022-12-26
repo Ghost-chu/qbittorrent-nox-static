@@ -58,7 +58,7 @@ jobs:
           echo "qbt_cross_name=${{ matrix.arch_type  }}" >> env.custom
           echo "qbt_libtorrent_version=${{ matrix.libtorrent_version }}" >> env.custom
           echo "qbt_qt_version=${{ matrix.qbt_qt_version }}" >> env.custom
-          echo "qbt_workflow_files=yes" >> env.custom
+          echo "qbt_workflow_files=no" >> env.custom
           echo "libtorrent_github_url=${{ matrix.libtorrent_github_url }}" >> env.custom
 
       - name: Host - Create docker multiarch container
